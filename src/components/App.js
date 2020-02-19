@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      Hey!
+      Pleased to meet you, hope you guess my name.
     </div>
   );
 }
