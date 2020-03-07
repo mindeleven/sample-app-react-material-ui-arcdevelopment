@@ -27,6 +27,12 @@ const useStyles = makeStyles(theme => ({
   },
   logo: {
     height: "7em"
+  },
+  tabContainer: {
+    marginLeft: 'auto'
+  },
+  tab: {
+    fontFamily: "Raleway"
   }
 }));
 
@@ -38,12 +44,12 @@ export default function Header (props) {
         <AppBar position="fixed">
           <Toolbar disableGutters={true}>
             <img className={classes.logo} alt="company logo" src={logo} />
-            <Tabs>
-              <Tab label="Home" />
-              <Tab label="Services" />
-              <Tab label="The Revolution" />
-              <Tab label="About Us" />
-              <Tab label="Contact Us" />
+            <Tabs className={classes.tabContainer}>
+              <Tab className={classes.tab} label="Home" />
+              <Tab className={classes.tab} label="Services" />
+              <Tab className={classes.tab} label="The Revolution" />
+              <Tab className={classes.tab} label="About Us" />
+              <Tab className={classes.tab} label="Contact Us" />
             </Tabs>
           </Toolbar>
         </AppBar>
