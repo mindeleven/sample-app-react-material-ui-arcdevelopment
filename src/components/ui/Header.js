@@ -29,10 +29,12 @@ const useStyles = makeStyles(theme => ({
     height: "7em"
   },
   tabContainer: {
-    marginLeft: 'auto'
+    marginLeft: "auto"
   },
   tab: {
-    fontFamily: "Raleway"
+    ...theme.typography.tab,
+    minWidth: 10,
+    marginLeft: "25px"
   }
 }));
 
