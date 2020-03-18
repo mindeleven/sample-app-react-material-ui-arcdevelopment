@@ -174,9 +174,6 @@ export default function Header (props) {
               elevation={0}
             >
               {menuOptions.map((option, i) => (
-                console.log(option.name + i)
-              ))}
-              {menuOptions.map((option, i) => (
                 <MenuItem
                   key={option.name + i}
                   onClick={(event) => {handleMenuItemClick(event, i); handleClose(); setValue(1);}}
