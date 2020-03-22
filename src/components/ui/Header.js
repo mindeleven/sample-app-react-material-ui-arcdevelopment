@@ -99,7 +99,7 @@ export default function Header (props) {
   const [openDrawer, setOpenDrawer] = useState(false);
   const [value, setValue] = useState(0);
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [open, setOpen] = React.useState(false);
+  const [openMenu, setOpenMenu] = React.useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const handleChange = (e, value) => {
@@ -108,18 +108,18 @@ export default function Header (props) {
 
   const handleClick = (e) => {
     setAnchorEl(e.currentTarget);
-    setOpen(true);
+    setOpenMenu(true);
   }
 
   const handleMenuItemClick = (e, i) => {
     setAnchorEl(null);
-    setOpen(false);
+    setOpenMenu(false);
     setSelectedIndex(i);
   }
 
   const handleClose = (e) => {
     setAnchorEl(null);
-    setOpen(false);
+    setOpenMenu(false);
   }
 
   const menuOptions = [
@@ -213,7 +213,7 @@ export default function Header (props) {
       <Menu
         id="simple-menu"
         anchorEl={anchorEl}
-        open={open}
+        open={openMenu}
         onClose={handleClose}
         classes={{paper: classes.menu}}
         MenuListProps={{onMouseLeave: handleClose}}
