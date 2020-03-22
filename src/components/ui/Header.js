@@ -35,7 +35,10 @@ const useStyles = makeStyles(theme => ({
     height: "8em",
     [theme.breakpoints.down("md")]: {
       height: "7em"
-    }
+    },
+    [theme.breakpoints.down("xs")]: {
+      height: "5.5em"
+    },
   },
   logoContainer: {
     padding: 0,
