@@ -95,6 +95,16 @@ const useStyles = makeStyles(theme => ({
     "&:hover": {
       backgroundColor: "transparent"
     }
+  },
+  drawer: {
+    backgroundColor: theme.palette.common.blue
+  },
+  drawerItem: {
+    ...theme.typography.tab,
+    color: "white"
+  },
+  drawerItemEstimate: {
+    backgroundColor: theme.palette.common.orange
   }
 //  menuItem: {
 //    ...theme.typography.tab,
@@ -258,25 +268,75 @@ export default function Header (props) {
         open={openDrawer}
         onClose={() => setOpenDrawer(false)}
         onOpen={() => setOpenDrawer(true)}
+        classes={{ paper: classes.drawer }}
       >
         <List disablePadding>
-          <ListItem onClick={() => setOpenDrawer(false)} divider button component={Link} to="/">
-            <ListItemText disableTypography>Home</ListItemText>
+          <ListItem
+            onClick={() => setOpenDrawer(false)}
+            divider
+            button
+            component={Link}
+            to="/"
+          >
+            <ListItemText className={classes.drawerItem} disableTypography>
+              Home
+            </ListItemText>
           </ListItem>
-          <ListItem onClick={() => setOpenDrawer(false)} divider button component={Link} to="/services">
-            <ListItemText disableTypography>Services</ListItemText>
+          <ListItem
+            onClick={() => setOpenDrawer(false)}
+            divider
+            button
+            component={Link}
+            to="/services"
+          >
+            <ListItemText className={classes.drawerItem} disableTypography>
+              Services
+            </ListItemText>
           </ListItem>
-          <ListItem onClick={() => setOpenDrawer(false)} divider button component={Link} to="/revolution">
-            <ListItemText disableTypography>The Revolution</ListItemText>
+          <ListItem
+            onClick={() => setOpenDrawer(false)}
+            divider
+            button
+            component={Link}
+            to="/revolution"
+          >
+            <ListItemText className={classes.drawerItem} disableTypography>
+              The Revolution
+            </ListItemText>
           </ListItem>
-          <ListItem onClick={() => setOpenDrawer(false)} divider button component={Link} to="/about">
-            <ListItemText disableTypography>About Us</ListItemText>
+          <ListItem
+            onClick={() => setOpenDrawer(false)}
+            divider
+            button
+            component={Link}
+            to="/about"
+          >
+            <ListItemText className={classes.drawerItem} disableTypography>
+              About Us
+            </ListItemText>
           </ListItem>
-          <ListItem onClick={() => setOpenDrawer(false)} divider button component={Link} to="/contact">
-            <ListItemText disableTypography>Contact Us</ListItemText>
+          <ListItem
+            onClick={() => setOpenDrawer(false)}
+            divider
+            button
+            component={Link}
+            to="/contact"
+          >
+            <ListItemText className={classes.drawerItem} disableTypography>
+              Contact Us
+            </ListItemText>
           </ListItem>
-          <ListItem onClick={() => setOpenDrawer(false)} divider button component={Link} to="/estimate">
-            <ListItemText disableTypography>Free Estimate</ListItemText>
+          <ListItem
+            className={classes.drawerItemEstimate}
+            onClick={() => setOpenDrawer(false)}
+            divider
+            button
+            component={Link}
+            to="/estimate"
+          >
+            <ListItemText className={classes.drawerItem} disableTypography>
+              Free Estimate
+            </ListItemText>
           </ListItem>
         </List>
       </SwipeableDrawer>
