@@ -160,7 +160,14 @@ export default function Header (props) {
 
   const routes = [
     {name: 'Home', link: '/', activeIndex: 0},
-    {name: 'Services', link: '/services', activeIndex: 1},
+    {
+       name: 'Services',
+       link: '/services',
+       activeIndex: 1,
+       ariaOwns: anchorEl ? "simple-menu" : undefined,
+       ariaPopup: anchorEl ? "true" : undefined,
+       mouseOver: (event) => handleClick(event)
+    },
     {name: 'The Revolution', link: '/revolution', activeIndex: 2},
     {name: 'About Us', link: '/about', activeIndex: 3},
     {name: 'Contact Us', link: '/contact', activeIndex: 4}
@@ -191,24 +198,18 @@ export default function Header (props) {
         className={classes.tabContainer}
         indicatorColor="primary"
       >
+      {routes.map((route, index) => (
         <Tab
+          aria-owns={route.ariaOwns}
+          aria-haspopup={route.ariaPopup}
           className={classes.tab}
           component={Link}
-          to="/"
-          label="Home"
+          onMouseOver={route.mouseOver}
+          key={index}
+          to={route.link}
+          label={route.name}
         />
-        <Tab
-          aria-owns={anchorEl ? "simple-menu" : undefined}
-          aria-haspopup={anchorEl ? "true" : undefined}
-          className={classes.tab}
-          component={Link}
-          onMouseOver={(event) => handleClick(event)}
-          to="/services"
-          label="Services"
-        />
-        <Tab className={classes.tab} component={Link} to="/revolution" label="The Revolution" />
-        <Tab className={classes.tab} component={Link} to="/about" label="About Us" />
-        <Tab className={classes.tab} component={Link} to="/contact" label="Contact Us" />
+      ))}
       </Tabs>
       <Button variant="contained" color="secondary" className={classes.button}>
         Free Estimate
