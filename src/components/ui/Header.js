@@ -113,14 +113,6 @@ const useStyles = makeStyles(theme => ({
   appbar: {
     zIndex: theme.zIndex.modal + 1
   }
-
-//  menuItem: {
-//    ...theme.typography.tab,
-//    opacity: 0.7
-//    "&:hover": {
-//      opacity: 1
-//    }
-//  }
 }));
 
 export default function Header (props) {
