@@ -218,6 +218,7 @@ export default function Header (props) {
         classes={{paper: classes.menu}}
         MenuListProps={{onMouseLeave: handleClose}}
         elevation={0}
+        style={{zIndex: 1302}}
         keepMounted
       >
         {menuOptions.map((option, i) => (
