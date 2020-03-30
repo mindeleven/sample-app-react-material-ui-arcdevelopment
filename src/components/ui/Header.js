@@ -205,7 +205,7 @@ export default function Header (props) {
           className={classes.tab}
           component={Link}
           onMouseOver={route.mouseOver}
-          key={index}
+          key={`${route}${index}`}
           to={route.link}
           label={route.name}
         />
@@ -253,6 +253,7 @@ export default function Header (props) {
         <List disablePadding>
           {routes.map((route, index) => (
             <ListItem
+              key={`${route}${index}`}
               onClick={() => {setOpenDrawer(false); setValue(route.activeIndex)}}
               divider
               button
