@@ -109,7 +109,11 @@ const useStyles = makeStyles(theme => ({
   },
   drawerItemSelected: {
     opacity: 1
+  },
+  appbar: {
+    zIndex: theme.zIndex.modal + 1
   }
+
 //  menuItem: {
 //    ...theme.typography.tab,
 //    opacity: 0.7
@@ -250,6 +254,7 @@ export default function Header (props) {
         onOpen={() => setOpenDrawer(true)}
         classes={{ paper: classes.drawer }}
       >
+        <div className={classes.toolbarMargin} />
         <List disablePadding>
           {routes.map((route, index) => (
             <ListItem
@@ -300,7 +305,7 @@ export default function Header (props) {
   return (
     <React.Fragment>
       <ElevationScroll>
-        <AppBar position="fixed">
+        <AppBar position="fixed" className={classes.appbar}>
           <Toolbar disableGutters={true}>
             <Button
               component={Link}
