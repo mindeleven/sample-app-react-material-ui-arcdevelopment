@@ -121,13 +121,11 @@ export default function Header (props) {
   const matches = useMediaQuery(theme.breakpoints.down("md"));
 
   const [openDrawer, setOpenDrawer] = useState(false);
-  const [value, setValue] = useState(0);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [openMenu, setOpenMenu] = React.useState(false);
-  const [selectedIndex, setSelectedIndex] = useState(0);
 
   const handleChange = (e, newValue) => {
-    setValue(newValue);
+    props.setValue(newValue);
   }
 
   const handleClick = (e) => {
@@ -138,7 +136,7 @@ export default function Header (props) {
   const handleMenuItemClick = (e, i) => {
     setAnchorEl(null);
     setOpenMenu(false);
-    setSelectedIndex(i);
+    props.setSelectedIndex(i);
   }
 
   const handleClose = (e) => {
@@ -172,10 +170,10 @@ export default function Header (props) {
     [...menuOptions, ...routes].forEach((route) => {
       switch(window.location.pathname) {
         case `${route.link}`:
-          if (value !== route.activeIndex ) {
-            setValue(route.activeIndex);
-            if (route.selectedIndex && route.selectedIndex !== selectedIndex) {
-              setSelectedIndex(route.selectedIndex);
+          if (props.value !== route.activeIndex ) {
+            props.setValue(route.activeIndex);
+            if (route.selectedIndex && route.selectedIndex !== props.selectedIndex) {
+              props.setSelectedIndex(route.selectedIndex);
             }
           }
         break;
@@ -183,13 +181,13 @@ export default function Header (props) {
         break;
       }
     });
-  }, [value, menuOptions, selectedIndex, routes])
+  }, [props.value, menuOptions, props.selectedIndex, routes, props])
 
   const tabs = (
     <React.Fragment>
       <Tabs
         onChange={handleChange}
-        value={value}
+        value={props.value}
         className={classes.tabContainer}
         indicatorColor="primary"
       >
@@ -223,11 +221,11 @@ export default function Header (props) {
         {menuOptions.map((option, i) => (
           <MenuItem
             key={option.name + i}
-            onClick={(event) => {handleMenuItemClick(event, i); handleClose(); setValue(1);}}
+            onClick={(event) => {handleMenuItemClick(event, i); handleClose(); props.setValue(1);}}
             component={Link}
             to={option.link}
             classes={{ root: classes.menuItem }}
-            selected={i === selectedIndex && value === 1}
+            selected={i === props.selectedIndex && props.value === 1}
           >
             {option.name}
           </MenuItem>
@@ -251,15 +249,15 @@ export default function Header (props) {
           {routes.map((route, index) => (
             <ListItem
               key={`${route}${index}`}
-              onClick={() => {setOpenDrawer(false); setValue(route.activeIndex)}}
+              onClick={() => {setOpenDrawer(false); props.setValue(route.activeIndex)}}
               divider
               button
               component={Link}
               to={route.link}
-              selected={value === route.activeIndex}
+              selected={props.value === route.activeIndex}
             >
               <ListItemText
-                className={value === route.activeIndex ? [classes.drawerItem, classes.drawerItemSelected].join(' ') : classes.drawerItem}
+                className={props.value === route.activeIndex ? [classes.drawerItem, classes.drawerItemSelected].join(' ') : classes.drawerItem}
                 disableTypography
               >
                 {route.name}
@@ -268,15 +266,15 @@ export default function Header (props) {
           ))}
           <ListItem
             className={classes.drawerItemEstimate}
-            onClick={() => {setOpenDrawer(false); setValue(5)}}
+            onClick={() => {setOpenDrawer(false); props.setValue(5)}}
             divider
             button
             component={Link}
             to="/estimate"
-            selected={value === 5}
+            selected={props.value === 5}
           >
             <ListItemText
-              className={value === 5 ? [classes.drawerItem, classes.drawerItemSelected].join(' ') : classes.drawerItem}
+              className={props.value === 5 ? [classes.drawerItem, classes.drawerItemSelected].join(' ') : classes.drawerItem}
               disableTypography
             >
               Free Estimate
@@ -304,7 +302,7 @@ export default function Header (props) {
               to="/"
               disableRipple
               className={classes.logoContainer}
-              onClick={() => {setValue(0)}}
+              onClick={() => {props.setValue(0)}}
             >
               <img className={classes.logo} alt="company logo" src={logo} />
             </Button>
