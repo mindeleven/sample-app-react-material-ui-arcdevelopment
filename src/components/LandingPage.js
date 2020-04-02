@@ -2,7 +2,7 @@ import React from 'react'
 import Lottie from 'react-lottie';
 import { makeStyles } from '@material-ui/core/styles';
 
-import animationData from './animation/landinganimation/data';
+import animationData from '../animations/landinganimation/data';
 
 const useStyles = makeStyles(theme => ({
 
