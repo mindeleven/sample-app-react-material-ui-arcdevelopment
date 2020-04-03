@@ -3,6 +3,7 @@ import Lottie from 'react-lottie';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
 import animationData from '../animations/landinganimation/data';
 import ButtonArrow from './ui/ButtonArrow';
@@ -26,9 +27,11 @@ export default function LandingPage() {
   return (
     <Grid container direction="column">
       <Grid item>
-        <Grid container direction="row">
+        <Grid container justify="flex-end" alignItems="center" direction="row">
           <Grid item>
-            <div>Bringing West Coast Technology<br /> to the Midwest</div>
+            <Typography variant="h2" align="center">
+              Bringing West Coast Technology<br /> to the Midwest
+            </Typography>
             <Grid container>
               <Grid item>
                 <Button variant="contained">Free Estmate</Button>
