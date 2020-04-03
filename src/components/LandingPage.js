@@ -9,7 +9,12 @@ import animationData from '../animations/landinganimation/data';
 import ButtonArrow from './ui/ButtonArrow';
 
 const useStyles = makeStyles(theme => ({
-
+  animation: {
+    maxWidth: "50em",
+    minWidth: "21em",
+    marginTop: "2em",
+    marginLeft: "10%"
+  }
 }));
 
 export default function LandingPage() {
@@ -28,7 +33,7 @@ export default function LandingPage() {
     <Grid container direction="column">
       <Grid item>
         <Grid container justify="flex-end" alignItems="center" direction="row">
-          <Grid item>
+          <Grid sm item>
             <Typography variant="h2" align="center">
               Bringing West Coast Technology<br /> to the Midwest
             </Typography>
@@ -44,7 +49,7 @@ export default function LandingPage() {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item>
+          <Grid sm item className={classes.animation}>
             <Lottie options={defaultOptions} height="100%" width="100%" />
           </Grid>
         </Grid>
