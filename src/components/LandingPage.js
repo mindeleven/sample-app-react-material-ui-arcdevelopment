@@ -4,6 +4,7 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 import animationData from '../animations/landinganimation/data';
 import customSoftwareIcon from '../assets/Custom Software Icon.svg'
@@ -43,7 +44,10 @@ const useStyles = makeStyles(theme => ({
     ...theme.typography.learnButton,
     fontSize: "0.7rem",
     height: 35,
-    padding: 5
+    padding: 5,
+    [theme.breakpoints.down("sm")]: {
+      marginBottom: "2em"
+    }
   },
   mainContainer: {
     narginTop: "5em",
@@ -67,12 +71,25 @@ const useStyles = makeStyles(theme => ({
   },
   subtitle: {
     marginBottom: "1em"
+  },
+  icon: {
+    marginLeft: "2em",
+    [theme.breakpoints.down("xs")]: {
+      marginLeft: 0
+    }
+  },
+  serviceContainer: {
+    marginTop: "12em",
+    [theme.breakpoints.down("sm")]: {
+      padding: 25
+    }
   }
 }));
 
 export default function LandingPage() {
   const classes = useStyles();
   const theme = useTheme();
+  const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
 
   const defaultOptions = {
     loop: true,
@@ -109,8 +126,16 @@ export default function LandingPage() {
         </Grid>
       </Grid>
       <Grid item> {/*----- Services Block -----*/}
-        <Grid container direction="row">
-          <Grid item>
+        <Grid
+          container
+          direction="row"
+          justify={matchesSM ? "center" : undefined}
+          className={classes.serviceContainer}
+        >
+          <Grid item style={{
+            marginLeft: matchesSM ? 0 : "5em",
+            textAlign: matchesSM ? "center" : undefined
+          }}>
             <Typography variant="h4">
               Custom Software Development
             </Typography>
@@ -127,7 +152,7 @@ export default function LandingPage() {
             </Button>
           </Grid>
           <Grid item>
-            <img alt="custom softwre icon" src={customSoftwareIcon} />
+            <img className={classes.icon} alt="custom softwre icon" src={customSoftwareIcon} />
           </Grid>
         </Grid>
       </Grid>
